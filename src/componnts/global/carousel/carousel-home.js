@@ -49,7 +49,7 @@ const CarouselHome = () => {
               <Box
                 component="img"
                 sx={{
-                  height: 600,
+                  height: 490,
                   display: "block",
                   width: "100vw",
                   overflow: "hidden",
@@ -66,6 +66,10 @@ const CarouselHome = () => {
           steps={maxSteps}
           position="center"
           activeStep={activeStep}
+          sx={{
+            backgroundColor: 'transparent',
+            color: 'green',
+          }}
         />
       </Box>
 

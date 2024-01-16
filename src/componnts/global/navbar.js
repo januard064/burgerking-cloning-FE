@@ -72,7 +72,7 @@ function Navbar() {
   return (
     <>
       <AppBar
-        position="static"
+        // position="static"
         sx={{
           background: "#2D2D2D",
           height: 76,
@@ -144,12 +144,12 @@ function Navbar() {
                 sx={{
                   fontFamily: "FlameRegular",
                   color: "#FFFFFF",
-                  fontSize: 25,
+                  fontSize: 20,
                   mr: 4,
                   display: { xs: "none", md: "flex" },
                 }}
               >
-                Login
+                LOGIN
               </Typography>
               <Box
                 sx={{

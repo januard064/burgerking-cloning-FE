@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import { Drawer } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -16,49 +17,54 @@ const pageMenus = [
   {
     title1: "Delivery",
     title2: "Order",
+    path: "/menus",
   },
   {
     title1: "Get Fresh",
     title2: "Promotions",
+    path: "/news-v1",
   },
   {
     title1: "Exclusive",
     title2: "Large Order",
+    path: "/large-orders/create",
   },
 ];
 
 const PageMenu = (props) => {
   return (
-    <div
-      style={{
-        height: "100%",
-        position: "relative",
-        alignItems: "center",
-        display: "flex",
-        marginRight: 44,
-      }}
-    >
-      <div>
-        <Typography
-          sx={{
-            fontFamily: "FlameRegular",
-            fontSize: 12,
-            color: "#FAAF18",
-          }}
-        >
-          {props.title1}
-        </Typography>
-        <Typography
-          sx={{
-            fontFamily: "FlameBold",
-            color: "#FFFFFF",
-            fontSize: 25,
-          }}
-        >
-          {props.title2}
-        </Typography>
+    <Link to={props.path} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          height: "100%",
+          position: "relative",
+          alignItems: "center",
+          display: "flex",
+          marginRight: 44,
+        }}
+      >
+        <div>
+          <Typography
+            sx={{
+              fontFamily: "FlameRegular",
+              fontSize: 12,
+              color: "#FAAF18",
+            }}
+          >
+            {props.title1}
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: "FlameBold",
+              color: "#FFFFFF",
+              fontSize: 25,
+            }}
+          >
+            {props.title2}
+          </Typography>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -68,6 +74,8 @@ function Navbar() {
   const toggleDrawer = () => {
     setStateDrower(!stateDrower);
   };
+
+  let navigate = useNavigate();
 
   return (
     <>
@@ -123,7 +131,12 @@ function Navbar() {
                 height: 76,
               }}
             >
-              <div style={{ marginRight: 35, marginTop: 10 }}>
+              <div
+                style={{ marginRight: 35, marginTop: 10 }}
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
                 <img
                   src="https://bkdelivery.co.id/static/website/img/logo_2022_x2.6bb6d972f0a5.png"
                   alt="logo"
@@ -135,6 +148,7 @@ function Navbar() {
                   key={index}
                   title1={menu.title1}
                   title2={menu.title2}
+                  path={menu.path}
                 />
               ))}
             </Box>
@@ -215,7 +229,11 @@ function Navbar() {
           >
             {pageMenus.map((menu, index) => (
               <Box key={index} sx={{ my: 2 }}>
-                <PageMenu title1={menu.title1} title2={menu.title2} />
+                <PageMenu
+                  title1={menu.title1}
+                  title2={menu.title2}
+                  path={menu.path}
+                />
               </Box>
             ))}
           </Box>

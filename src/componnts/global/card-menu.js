@@ -6,7 +6,7 @@ const CardMenu = (props) => {
 
   return (
     <div
-      style={{ borderRadius: "10px", background: "#FFFFFF", padding: "20px" }}
+      style={{ borderRadius: "10px", background: "#FFFFFF", padding: "20px", boxShadow:'2px 2px 15px -4px #6B6B6B' }}
     >
       <img
         src={thumbnail}

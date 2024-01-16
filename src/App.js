@@ -7,6 +7,7 @@ import CartDelivery from "./pages/cart/delivery";
 import CartPayment from "./pages/cart/payment";
 import Menus from "./pages/menus";
 import LargeOrder from "./pages/large-order";
+import Promotions from "./pages/promotions";
 import { Box } from "@mui/material";
 
 import Navbar from "./componnts/global/navbar";
@@ -14,12 +15,15 @@ import Navbar from "./componnts/global/navbar";
 function App() {
   return (
     <div>
-      <Navbar />
+  
       <Box sx={{ mt: "76px" }}>
         <Router>
+        <Navbar />
           <Routes>
             <Route path="*" element={<HomePage />} />
             <Route path="/menus" element={<Menus />} />
+            <Route path="/menus/:menuId" element={<Menus />} />
+            <Route path="/news-v1" element={<Promotions />} />
             <Route path="/large-orders/create" element={<LargeOrder />} />
             <Route path="/cart/preview" element={<CartPreview />} />
             <Route path="/cart/delivery" element={<CartDelivery />} />

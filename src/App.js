@@ -11,6 +11,7 @@ import Promotions from "./pages/promotions";
 import { Box } from "@mui/material";
 
 import Navbar from "./componnts/global/navbar";
+import Footer from "./componnts/global/footer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/cart/payment" element={<CartPayment />} />
           </Routes>
         </Router>
+        <Footer />
       </Box>
     </div>
   );

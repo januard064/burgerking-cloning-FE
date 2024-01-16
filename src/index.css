@@ -30,4 +30,12 @@ code {
   ;
 }
 
+@font-face {
+  font-family: "FlameSans";
+  src: local("FlameSans"),
+  url("./fonts/flame/FlameSans.otf") format("trueType")
+  ;
+}
+
+
 

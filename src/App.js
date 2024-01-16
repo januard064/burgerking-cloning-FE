@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 
 import Navbar from "./componnts/global/navbar";
 import Footer from "./componnts/global/footer";
+import DetailProduct from "./pages/product";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/menus" element={<Menus />} />
             <Route path="/menus/:menuId" element={<Menus />} />
             <Route path="/news-v1" element={<Promotions />} />
+            <Route path="/product/:productId" element={<DetailProduct />} />
             <Route path="/large-orders/create" element={<LargeOrder />} />
             <Route path="/cart/preview" element={<CartPreview />} />
             <Route path="/cart/delivery" element={<CartDelivery />} />

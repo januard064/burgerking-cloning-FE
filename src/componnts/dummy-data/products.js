@@ -8,6 +8,7 @@ export const PRODUCTS_BKAPP = [
     newPrice: 15455,
     oldPrice: 28636,
     thumbnail: product0,
+    menuId: "bk-app-exclusive",
   },
   {
     id: 14,
@@ -16,6 +17,7 @@ export const PRODUCTS_BKAPP = [
     newPrice: 25000,
     oldPrice: 49545,
     thumbnail: product0,
+    menuId: "bk-app-exclusive",
   },
 ];
 
@@ -27,6 +29,7 @@ export const PRODUCTS_PROMO = [
     newPrice: 21818,
     oldPrice: 40000,
     thumbnail: product0,
+    menuId: "promo-hari-ini-6",
   },
 ];
 
@@ -39,6 +42,7 @@ export const PRODUCTS_CHEESE = [
     newPrice: 109091,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "new-cheese-dunk-limited-time-offer",
   },
 ];
 
@@ -51,6 +55,7 @@ export const PRODUCTS_KING = [
     newPrice: 16818,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "new-king-fusion-nutella-limited-time-offer",
   },
 ];
 
@@ -62,6 +67,7 @@ export const PRODUCTS_HEINZ = [
     newPrice: 90909,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "heinz-mexican-whopper",
   },
 ];
 
@@ -74,6 +80,7 @@ export const PRODUCTS_GOLD = [
     newPrice: 50000,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "gold-collection-5",
   },
 ];
 
@@ -85,6 +92,7 @@ export const PRODUCTS_CHEESEW = [
     newPrice: 80909,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "cheese-whopper-4",
   },
 ];
 
@@ -96,6 +104,7 @@ export const PRODUCTS_CHEESEBURGER = [
     newPrice: 61819,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "cheeseburger-favoriter",
   },
 ];
 
@@ -107,6 +116,7 @@ export const PRODUCTS_KINGSCHICKEN = [
     newPrice: 35000,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "kings-chicken-rasa-baru",
   },
 ];
 
@@ -118,6 +128,7 @@ export const PRODUCTS_KIDSMEAL = [
     newPrice: 31818,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "kids-meal",
   },
 ];
 
@@ -129,6 +140,7 @@ export const PRODUCTS_SIDEDESSERT = [
     newPrice: 12727,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "side-dessert",
   },
 ];
 
@@ -140,6 +152,7 @@ export const PRODUCTS_BEVERAGES = [
     newPrice: 18182,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "beverages",
   },
 ];
 
@@ -151,5 +164,21 @@ export const PRODUCTS_KINGDEALS = [
     newPrice: 40909,
     oldPrice: null,
     thumbnail: product0,
+    menuId: "king-deals",
   },
 ];
+
+export const ALLPRODUCST = PRODUCTS_BKAPP.concat(
+  PRODUCTS_BKAPP,
+  PRODUCTS_CHEESE,
+  PRODUCTS_CHEESEBURGER,
+  PRODUCTS_CHEESEW,
+  PRODUCTS_GOLD,
+  PRODUCTS_HEINZ,
+  PRODUCTS_KIDSMEAL,
+  PRODUCTS_KING,
+  PRODUCTS_KINGDEALS,
+  PRODUCTS_KINGSCHICKEN,
+  PRODUCTS_PROMO,
+  PRODUCTS_SIDEDESSERT
+);

@@ -1,24 +1,20 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "./button";
+import { getRupiah } from "../utils";
 
 const CardMenu = (props) => {
   const { menu, handleOrder, isDetail } = props;
 
-  const getRupiah = (number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-    }).format(number);
-  };
-
+  const navigate = useNavigate();
 
   const handleClickCard = () => {
-    if(isDetail){
-
-    } else{
-      handleOrder()
+    if (isDetail) {
+      navigate(`/product/${menu.id}`);
+    } else {
+      handleOrder();
     }
-  }
+  };
 
   return (
     <div
@@ -28,7 +24,7 @@ const CardMenu = (props) => {
         padding: "20px",
         boxShadow: "2px 2px 15px -4px #6B6B6B",
         minHeight: isDetail ? 280 : 250,
-        cursor:'pointer'
+        cursor: "pointer",
       }}
       onClick={handleClickCard}
     >
@@ -82,8 +78,8 @@ const CardMenu = (props) => {
                   fontFamily: "FlameRegular",
                   color: "#9F816F",
                   fontSize: 12,
-                  marginLeft:8,
-                  textDecoration:'line-through'
+                  marginLeft: 8,
+                  textDecoration: "line-through",
                 }}
               >
                 {getRupiah(menu.oldPrice)}

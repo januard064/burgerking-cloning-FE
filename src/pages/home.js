@@ -23,7 +23,7 @@ const HomePage = () => {
       >
         Our Menus
       </div>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center", mt:4 }}>
         <Box sx={{ width:{ xs:'100%', md:'960px' }, padding:{xs:'0px 20px', md:'0px'} }}>
           <Grid container spacing={2} sx={{}}>
             {HOME_MENU.map((menu, index) => (

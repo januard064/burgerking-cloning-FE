@@ -11,14 +11,14 @@ export const HOME_MENU = [
     menuId: "promo-hari-ini-6",
     name: "Promo Hari Ini",
     thumbnail:
-      "https://media-order.bkdelivery.co.id/thumb/group_photo/2023/3/15/znilxvdnwuyurvfmej3lft_product_list.jpg",
+      "",
   },
   {
     id: 2,
     name: "NEW! Cheese Dunk [Limited Time Offer]",
     menuId: "new-cheese-dunk-limited-time-offer",
     thumbnail:
-      "https://media-order.bkdelivery.co.id/thumb/group_photo/2023/3/15/znilxvdnwuyurvfmej3lft_product_list.jpg",
+      "",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ export const HOME_MENU = [
 
     name: "NEW! King Fusion Nutella® [Limited Time Offer]",
     thumbnail:
-      "https://media-order.bkdelivery.co.id/thumb/group_photo/2023/3/15/znilxvdnwuyurvfmej3lft_product_list.jpg",
+      "",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const HOME_MENU = [
     menuId: "gold-collection-5",
 
     thumbnail:
-      "https://media-order.bkdelivery.co.id/thumb/group_photo/2023/3/15/znilxvdnwuyurvfmej3lft_product_list.jpg",
+      "",
   },
   {
     id: 6,

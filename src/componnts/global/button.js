@@ -1,5 +1,5 @@
 const Button = (props) => {
-  const { children } = props;
+  const { children, onClick } = props;
 
   return (
     <div
@@ -13,6 +13,7 @@ const Button = (props) => {
         cursor:'pointer',
         height:'36px'
       }}
+      onClick={onClick}
     >
       <div style={{ fontFamily:'FlameRegular', color:'#FFFFFF', fontSize:16 }}>{children}</div>
     </div>

@@ -2,10 +2,14 @@ import CarouselHome from "../componnts/global/carousel/carousel-home";
 import { Grid, Box } from "@mui/material";
 import styled from "@emotion/styled";
 import CardMenu from "../componnts/global/card-menu";
+import { useNavigate } from "react-router-dom";
 
 import { HOME_MENU } from "../componnts/dummy-data/home-menus-data";
 
 const HomePage = () => {
+  
+  const navigate = useNavigate()
+
   return (
     <>
       <CarouselHome />
@@ -28,7 +32,7 @@ const HomePage = () => {
           <Grid container spacing={2} sx={{}}>
             {HOME_MENU.map((menu, index) => (
               <Grid key={index} item xs={6} md={4}>
-                <CardMenu name={menu.name} thumbnail={menu.thumbnail} />
+                <CardMenu menu={menu} handleOrder={() => navigate(`/menus/${menu.menuId}`) } />
               </Grid>
             ))}
           </Grid>

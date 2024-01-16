@@ -32,7 +32,7 @@ const Separator = () => {
 
 const Footer = () => {
   return (
-    <footer style={{ background: "#2D2D2D", width: "100%", height: 120 }}>
+    <footer style={{ background: "#2D2D2D", width: "100%", height: 120, marginTop:50 }}>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box
           sx={{

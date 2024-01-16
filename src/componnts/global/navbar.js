@@ -132,7 +132,7 @@ function Navbar() {
               }}
             >
               <div
-                style={{ marginRight: 35, marginTop: 10 }}
+                style={{ marginRight: 35, marginTop: 10, cursor:'pointer' }}
                 onClick={() => {
                   navigate("/");
                 }}

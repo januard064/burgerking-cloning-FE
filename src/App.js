@@ -1,5 +1,6 @@
 import "./App.css";
 
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home";
 import CartPreview from "./pages/cart/preview";
@@ -14,13 +15,34 @@ import Navbar from "./componnts/global/navbar";
 import Footer from "./componnts/global/footer";
 import DetailProduct from "./pages/product";
 
+export const AppContext = createContext({});
+
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const handleAddToCart = (product) => {
+    const newCart = [...cart, product];
+    setCart((prev) => [...prev, product]);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  useEffect(() => {
+    const cartsLocal = localStorage.getItem("cart");
+    if (cartsLocal) {
+      setCart(JSON.parse(cartsLocal));
+    }
+  }, []);
+
+  const AppContextValue = {
+    cart,
+    handleAddToCart,
+  };
+
   return (
-    <div>
-  
+    <AppContext.Provider value={AppContextValue}>
       <Box sx={{ mt: "76px" }}>
         <Router>
-        <Navbar />
+          <Navbar />
           <Routes>
             <Route path="*" element={<HomePage />} />
             <Route path="/menus" element={<Menus />} />
@@ -35,7 +57,7 @@ function App() {
         </Router>
         <Footer />
       </Box>
-    </div>
+    </AppContext.Provider>
   );
 }
 

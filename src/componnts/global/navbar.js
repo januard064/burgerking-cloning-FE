@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import { Drawer } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../../App";
 
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -69,7 +70,9 @@ const PageMenu = (props) => {
 };
 
 function Navbar() {
-  const [stateDrower, setStateDrower] = React.useState(false);
+  const { cart } = useContext(AppContext);
+
+  const [stateDrower, setStateDrower] = useState(false);
 
   const toggleDrawer = () => {
     setStateDrower(!stateDrower);
@@ -132,7 +135,7 @@ function Navbar() {
               }}
             >
               <div
-                style={{ marginRight: 35, marginTop: 10, cursor:'pointer' }}
+                style={{ marginRight: 35, marginTop: 10, cursor: "pointer" }}
                 onClick={() => {
                   navigate("/");
                 }}
@@ -173,8 +176,29 @@ function Navbar() {
                   alignItems: "center",
                   background: "#ED7801",
                   justifyContent: "center",
+                  position: "relative",
                 }}
               >
+                {cart.length > 0 && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: 20,
+                      height: 20,
+                      borderRadius: "50%",
+                      top: 15,
+                      right: 10,
+                      background: "#FF0000",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize:14
+                    }}
+                  >
+                    {cart.length}
+                  </div>
+                )}
+
                 <ShoppingCartIcon color={"#FFFFFF"} sx={{ fontSize: 30 }} />
               </Box>
             </Box>

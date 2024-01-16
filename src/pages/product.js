@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Grid, Box } from "@mui/material";
 import { HOME_MENU } from "../componnts/dummy-data/home-menus-data";
 import SideCardMenu from "../componnts/global/side-card-menu";
 import { ALLPRODUCST } from "../componnts/dummy-data/products";
 import { useParams } from "react-router-dom";
 import { getRupiah } from "../componnts/utils";
+import { AppContext } from "../App";
+import Button from "../componnts/global/button";
 
 const DetailProduct = () => {
   const param = useParams();
+  const { handleAddToCart } = useContext(AppContext);
 
   const [selectedProduct, setSelectedProduct] = useState();
 
@@ -81,18 +84,26 @@ const DetailProduct = () => {
                   {selectedProduct?.detail}
                 </div>
               )}
-              <div style={{ textAlign:'left' }}>
+              <div style={{ textAlign: "left" }}>
                 <img
                   src={selectedProduct?.thumbnail}
                   alt={selectedProduct?.name}
-                  style={{ width: 270, height:'auto' , marginTop:20}}
+                  style={{ width: 270, height: "auto", marginTop: 20 }}
                 />
               </div>
             </div>
             <div style={{ width: "40%", padding: "35px 20px" }}>
-              <div style={{ fontFamily: "FlameRegular", fontSize: 28 }}>
+              <div style={{ fontFamily: "FlameRegular", fontSize: 28, marginBottom:25 }}>
                 {getRupiah(selectedProduct?.newPrice)}
               </div>
+
+              <Button
+                onClick={() => {
+                  handleAddToCart(selectedProduct);
+                }}
+              >
+                Add To Cart
+              </Button>
             </div>
           </div>
         </Box>

@@ -9,9 +9,12 @@ import CartPayment from "./pages/cart/payment";
 import Menus from "./pages/menus";
 import LargeOrder from "./pages/large-order";
 
+import Navbar from "./componnts/global/navbar";
+
 function App() {
   return (
     <div>
+      <Navbar />
       <Router>
         <Routes>
           <Route path="*" element={<HomePage />} />

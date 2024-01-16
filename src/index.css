@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "FlameBold";
+  src: local("FlameBold"),
+  url("./fonts/flame/FlameBold.otf") format("trueType")
+  ;
+}
+
+@font-face {
+  font-family: "FlameRegular";
+  src: local("FlameRegular"),
+  url("./fonts/flame/FlameRegular.otf") format("trueType")
+  ;
+}
+
+

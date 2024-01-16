@@ -1,8 +1,5 @@
 const HomePage = () => {
+  return <div style={{ color:'black', fontFamily:'FlameBold', }}>Home</div>;
+};
 
-    return(
-        <div>Home</div>
-    )
-}
-
-export default HomePage
+export default HomePage;

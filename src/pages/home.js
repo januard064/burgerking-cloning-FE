@@ -1,5 +1,11 @@
+import CarouselHome from "../componnts/global/carousel/carousel-home";
+
 const HomePage = () => {
-  return <div style={{ color:'black', fontFamily:'FlameBold', }}>Home</div>;
+  return (
+    <>
+      <CarouselHome />
+    </>
+  );
 };
 
 export default HomePage;

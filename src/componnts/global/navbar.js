@@ -76,6 +76,9 @@ function Navbar() {
         sx={{
           background: "#2D2D2D",
           height: 76,
+          position: "fixed",
+          top: 0,
+          zIndex: 1500,
         }}
       >
         <Container maxWidth="lg">

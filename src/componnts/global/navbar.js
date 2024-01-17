@@ -43,6 +43,7 @@ const PageMenu = (props) => {
           display: "flex",
           marginRight: 44,
         }}
+        onClick={props.toggleDrawer}
       >
         <div>
           <Typography
@@ -84,6 +85,7 @@ function Navbar() {
     <>
       <AppBar
         // position="static"
+        elevation={0}
         sx={{
           background: "#2D2D2D",
           height: 76,
@@ -92,7 +94,7 @@ function Navbar() {
           zIndex: 1500,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ pr:0,pl:0 }}>
           <Toolbar disableGutters>
             <Box
               sx={{
@@ -108,7 +110,11 @@ function Navbar() {
                 onClick={toggleDrawer}
                 color="inherit"
               >
-                <MenuIcon />
+                {stateDrower ? (
+                  <CloseIcon sx={{ color: "#FAAF18" }} />
+                ) : (
+                  <MenuIcon sx={{ color: "#FAAF18" }} />
+                )}
               </IconButton>
             </Box>
 
@@ -119,6 +125,9 @@ function Navbar() {
                 height: 76,
                 justifyContent: "center",
                 alignItems: "center",
+              }}
+              onClick={() => {
+                navigate("/");
               }}
             >
               <img
@@ -168,97 +177,71 @@ function Navbar() {
               >
                 LOGIN
               </Typography>
-              <Link to={'/cart/preview'} style={{ textDecoration: "none", color:'inherit' }}>
-              <Box
-                sx={{
-                  height: 76,
-                  width: 60,
-                  display: "flex",
-                  alignItems: "center",
-                  background: "#ED7801",
-                  justifyContent: "center",
-                  position: "relative",
-                }}
+              <Link
+                to={"/cart/preview"}
+                style={{ textDecoration: "none", color: "inherit" }}
               >
-                {cart.length > 0 && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      width: 20,
-                      height: 20,
-                      borderRadius: "50%",
-                      top: 15,
-                      right: 10,
-                      background: "#FF0000",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      fontSize:14
-                    }}
-                  >
-                    {cart.length}
-                  </div>
-                )}
+                <Box
+                  sx={{
+                    height: 76,
+                    width: 60,
+                    display: "flex",
+                    alignItems: "center",
+                    background: "#ED7801",
+                    justifyContent: "center",
+                    position: "relative",
+                  }}
+                >
+                  {cart.length > 0 && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        width: 20,
+                        height: 20,
+                        borderRadius: "50%",
+                        top: 15,
+                        right: 10,
+                        background: "#FF0000",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: 14,
+                      }}
+                    >
+                      {cart.length}
+                    </div>
+                  )}
 
-                <ShoppingCartIcon color={"#FFFFFF"} sx={{ fontSize: 30 }} />
-              </Box>
+                  <ShoppingCartIcon color={"#FFFFFF"} sx={{ fontSize: 30 }} />
+                </Box>
               </Link>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
 
-      <Drawer anchor={"top"} open={stateDrower} onClose={toggleDrawer}>
-        <Box sx={{ height: "100vh", background: "#2d2d2d" }}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              sx={{
-                pl: "12px",
-              }}
-              color={"#FAAF18"}
-              onClick={toggleDrawer}
-            >
-              <CloseIcon sx={{ fontSize: 30 }} />
-            </Box>
-            <img
-              src="https://bkdelivery.co.id/static/website/img/logo_2022_x2.6bb6d972f0a5.png"
-              alt="logo"
-              style={{ height: 40, width: 40 }}
-            />
-
-            <Box
-              sx={{
-                height: 50,
-                width: 52,
-                display: "flex",
-                alignItems: "center",
-                background: "#ED7801",
-                justifyContent: "center",
-              }}
-              color={"#FFFFFF"}
-            >
-              <ShoppingCartIcon sx={{ fontSize: 30 }} />
-            </Box>
-          </Box>
-
+      <Drawer
+        anchor={"top"}
+        open={stateDrower}
+        onClose={toggleDrawer}
+        sx={{
+          "&.MuiDrawer-root .MuiDrawer-paper": { marginTop: "67px" },
+        }}
+      >
+        <Box sx={{ height: "100vh", background: "#2d2d2d", pt: 8 }}>
           <Box
             sx={{
               padding: "0px 20px",
             }}
           >
+            <PageMenu title2={"Home"} path={"/"} toggleDrawer={toggleDrawer} />
             {pageMenus.map((menu, index) => (
               <Box key={index} sx={{ my: 2 }}>
                 <PageMenu
                   title1={menu.title1}
                   title2={menu.title2}
                   path={menu.path}
+                  toggleDrawer={toggleDrawer}
                 />
               </Box>
             ))}

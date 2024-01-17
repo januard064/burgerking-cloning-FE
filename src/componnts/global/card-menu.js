@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./button";
 import { getRupiah } from "../utils";
+import { Box } from "@mui/material";
 
 const CardMenu = (props) => {
   const { menu, handleOrder, isDetail } = props;
@@ -49,7 +50,9 @@ const CardMenu = (props) => {
           >
             {menu.name}
           </div>
-          <Button>Order</Button>
+          <Box sx={{ display:{xs :'none', md:'flex'} }}>
+            <Button>Order</Button>
+          </Box>
         </div>
       ) : (
         <div>

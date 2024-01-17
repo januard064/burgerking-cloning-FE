@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -19,7 +19,7 @@ const Phone = () => {
 
 const Email = () => {
   return (
-    <div style={{ display: "flex", alignItems: "center", marginLeft: 30 }}>
+    <div style={{ display: "flex", alignItems: "center" }}>
       <EmailIcon sx={{ fontSize: 18, mr: 0.5 }} />
       <div>guestservice@burgerking.co.id</div>
     </div>
@@ -32,7 +32,14 @@ const Separator = () => {
 
 const Footer = () => {
   return (
-    <footer style={{ background: "#2D2D2D", width: "100%", height: 120, marginTop:50 }}>
+    <Box
+      sx={{
+        background: "#2D2D2D",
+        width: "100%",
+        height: { xs:'100%', md:'120px' },
+        marginTop: "50px",
+      }}
+    >
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box
           sx={{
@@ -60,7 +67,30 @@ const Footer = () => {
               alignItems: "center",
             }}
           >
-            <Phone />
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={2}>
+                <Phone />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <Email />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    // marginLeft: 30,
+                  }}
+                >
+                  <FacebookIcon sx={{ fontSize: 18 }} />
+                  <InstagramIcon sx={{ ml: 1, fontSize: 18 }} />
+                  <TwitterIcon sx={{ ml: 1, fontSize: 18 }} />
+                  <YouTubeIcon sx={{ ml: 1, fontSize: 18 }} />
+                </div>
+              </Grid>
+            </Grid>
+
+            {/* <Phone />
             <Email />
             <div
               style={{
@@ -73,7 +103,7 @@ const Footer = () => {
               <InstagramIcon sx={{ ml: 1, fontSize: 18 }} />
               <TwitterIcon sx={{ ml: 1, fontSize: 18 }} />
               <YouTubeIcon sx={{ ml: 1, fontSize: 18 }} />
-            </div>
+            </div> */}
           </div>
           <div
             style={{
@@ -91,7 +121,7 @@ const Footer = () => {
           </div>
         </Box>
       </Box>
-    </footer>
+    </Box>
   );
 };
 

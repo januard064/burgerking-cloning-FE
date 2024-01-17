@@ -19,6 +19,7 @@ export const AppContext = createContext({});
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleAddToCart = (product) => {
     const newCart = [...cart, product];
@@ -36,6 +37,8 @@ function App() {
   const AppContextValue = {
     cart,
     handleAddToCart,
+    totalPrice,
+    setTotalPrice
   };
 
   return (

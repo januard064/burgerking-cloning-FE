@@ -28,7 +28,7 @@ const pageMenus = [
   {
     title1: "Exclusive",
     title2: "Large Order",
-    path: "/large-orders/create",
+    path: "/",
   },
 ];
 

@@ -8,7 +8,7 @@ const ActiveProgress = (props) => {
         position: "absolute",
         display: "flex",
         ...props.style,
-        cursor:'pointer'
+        cursor: "pointer",
       }}
       onClick={props.onClick}
     >
@@ -48,8 +48,11 @@ const DefaultProgress = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        color: props.isActive ? "#8B542F" : "#c5a997",
+
         ...props.style,
       }}
+      onClick={props.onClick}
     >
       {props.label}
     </div>
@@ -62,7 +65,6 @@ const CartProgress = (props) => {
     <div
       style={{
         height: 45,
-        color: "#c5a997",
         width: "100%",
         fontFamily: "FlameRegular",
         position: "relative",
@@ -78,29 +80,40 @@ const CartProgress = (props) => {
         style={{ width: "30%" }}
       />
       <DefaultProgress
-        isActive={props.step == 1}
+        isActive={props.step == 1 || props.step == 2}
         label={"Delivery Info"}
         style={{ width: "35%" }}
+        onClick={() => {
+          if (props.step == 1 || props.step == 2) {
+            navigate("/cart/delivery");
+          }
+        }}
       />
       <DefaultProgress
         isActive={props.step == 2}
         label={"Payment"}
-        style={{ width: "30%" }}
+        style={{ width: "35%" }}
       />
 
       <ActiveProgress
-        isActive={props.step}
+        isActive={props.step == 0}
         label={"Cart"}
         style={{ width: "40%" }}
         onClick={() => navigate("/cart/preview")}
       />
       {props.step == 1 && (
         <ActiveProgress
+          isActive={props.step == 1}
           label={"Delivery Info"}
           style={{ left: "30%", width: "45%" }}
         />
       )}
-      {/*   <ActiveProgress label={"Delivery Info"} style={{ left: "70%", width:'30%' }} /> */}
+      {/* {props.step == 2 && (
+        <ActiveProgress
+          label={"Delivery Info"}
+          style={{ left: "70%", width: "30%" }}
+        />
+      )} */}
     </div>
   );
 };

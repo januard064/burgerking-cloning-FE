@@ -17,7 +17,7 @@ const CartPreview = () => {
             padding: { xs: "0px 20px", md: "0px" },
           }}
         >
-          <CartProgress />
+          <CartProgress step={0} />
           <div
             style={{
               width: "100%",

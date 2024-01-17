@@ -1,3 +1,6 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 const ActiveProgress = (props) => {
   return (
     <div
@@ -5,9 +8,23 @@ const ActiveProgress = (props) => {
         position: "absolute",
         display: "flex",
         ...props.style,
+        cursor:'pointer'
       }}
+      onClick={props.onClick}
     >
-      <div style={{ width: "80%", height: 45, background: "#faaf18", alignItems:'center', display:'flex', justifyContent:'center', color:'#8B542F' }}>{props.label}</div>
+      <div
+        style={{
+          width: "80%",
+          height: 45,
+          background: "#faaf18",
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "#8B542F",
+        }}
+      >
+        {props.label}
+      </div>
       <div
         style={{
           width: "10%",
@@ -26,7 +43,7 @@ const DefaultProgress = (props) => {
   return (
     <div
       style={{
-        backgroundColor: "#fcebd9",
+        backgroundColor: props.isActive ? "#faaf18" : "#fcebd9",
         height: "100%",
         display: "flex",
         justifyContent: "center",
@@ -39,7 +56,8 @@ const DefaultProgress = (props) => {
   );
 };
 
-const CartProgress = () => {
+const CartProgress = (props) => {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -54,13 +72,35 @@ const CartProgress = () => {
         alignItems: "center",
       }}
     >
-      <DefaultProgress label={"Cart"} style={{ width: "30%" }} />
-      <DefaultProgress label={"Delivery Info"} style={{ width: "40%" }} />
-      <DefaultProgress label={"Payment"} style={{ width: "30%" }} />
-      
-      <ActiveProgress label={'Cart'} style={{width:'30%' }} />
-      {/* <ActiveProgress label={"Delivery Info"} style={{ left: "30%", width:'40%' }} />
-      <ActiveProgress label={"Delivery Info"} style={{ left: "70%", width:'30%' }} /> */}
+      <DefaultProgress
+        isActive={props.step == 0}
+        label={"Cart"}
+        style={{ width: "30%" }}
+      />
+      <DefaultProgress
+        isActive={props.step == 1}
+        label={"Delivery Info"}
+        style={{ width: "35%" }}
+      />
+      <DefaultProgress
+        isActive={props.step == 2}
+        label={"Payment"}
+        style={{ width: "30%" }}
+      />
+
+      <ActiveProgress
+        isActive={props.step}
+        label={"Cart"}
+        style={{ width: "40%" }}
+        onClick={() => navigate("/cart/preview")}
+      />
+      {props.step == 1 && (
+        <ActiveProgress
+          label={"Delivery Info"}
+          style={{ left: "30%", width: "45%" }}
+        />
+      )}
+      {/*   <ActiveProgress label={"Delivery Info"} style={{ left: "70%", width:'30%' }} /> */}
     </div>
   );
 };

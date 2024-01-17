@@ -168,6 +168,7 @@ function Navbar() {
               >
                 LOGIN
               </Typography>
+              <Link to={'/cart/preview'} style={{ textDecoration: "none", color:'inherit' }}>
               <Box
                 sx={{
                   height: 76,
@@ -201,6 +202,7 @@ function Navbar() {
 
                 <ShoppingCartIcon color={"#FFFFFF"} sx={{ fontSize: 30 }} />
               </Box>
+              </Link>
             </Box>
           </Toolbar>
         </Container>

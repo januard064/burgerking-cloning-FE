@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Drawer } from "@mui/material";
 import { HOME_MENU } from "../componnts/dummy-data/home-menus-data";
 import { Grid } from "@mui/material";
 import CardMenu from "../componnts/global/card-menu";
 import SideCardMenu from "../componnts/global/side-card-menu";
 import { useParams } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 import {
   PRODUCTS_BEVERAGES,
@@ -21,11 +22,18 @@ import {
   PRODUCTS_PROMO,
   PRODUCTS_SIDEDESSERT,
 } from "../componnts/dummy-data/products";
-
 const Menus = () => {
   const param = useParams();
 
   const [products, setProducts] = useState(PRODUCTS_BKAPP);
+
+  const [selectedMenu, setSelectedMenu] = useState(HOME_MENU[0]);
+
+  useEffect(() => {
+    const menu = HOME_MENU.find((menu) => menu.menuId == param.menuId);
+    console.log({menu})
+    setSelectedMenu(menu);
+  }, [param?.menuId]);
 
   // dummy fetch
 
@@ -81,49 +89,108 @@ const Menus = () => {
     console.log({ products });
   }, [products]);
 
+  const [stateDrower, setStateDrower] = useState(false);
+
+  const toggleDrawer = () => {
+    setStateDrower(!stateDrower);
+  };
+
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "106px",
-        minHeight: "calc(100vh - 76px - 120px )",
-      }}
-    >
-      <Box
+    <>
+      <Drawer
+        anchor={"top"}
+        open={stateDrower}
+        onClose={toggleDrawer}
         sx={{
-          width: { xs: "100%", md: "960px" },
-          padding: { xs: "0px 20px", md: "0px" },
-          display: "flex",
+          "&.MuiDrawer-root .MuiDrawer-paper": { marginTop: "67px" },
         }}
       >
-        <Box sx={{ width: "calc(30% - 140px)", mr: "80px" }}>
-          <Box sx={{ width: "100%" }}>
-            {HOME_MENU.map((menu, index) => (
-              <SideCardMenu
-                key={index}
-                name={menu.name}
-                isActive={
-                  param.menuId ? menu.menuId == param.menuId : index === 0
-                }
-                path={menu.menuId}
-              />
-            ))}
-          </Box>
-        </Box>
-        <Box sx={{ width: "calc(80%)" }}>
-          <Box sx={{ width: "100%" }}>
-            <Grid container spacing={4} sx={{}}>
-              {products.map((menu, index) => (
-                <Grid key={index} item xs={6} md={6}>
-                  <CardMenu menu={menu} isDetail={true} />
+        <Box sx={{ height: "100vh", background: "#2d2d2d", pt: 4 }}>
+          <Box
+            sx={{
+              padding: "0px 20px",
+            }}
+          >
+            <CloseIcon sx={{ color: "#FAAF18" }} onClick={toggleDrawer} />
+
+            <Grid container spacing={2} sx={{ mt: 2 }}>
+              {HOME_MENU.map((menu, index) => (
+                <Grid item xs={6}>
+                  <SideCardMenu
+                    key={index}
+                    name={menu.name}
+                    isActive={
+                      param.menuId ? menu.menuId == param.menuId : index === 0
+                    }
+                    path={menu.menuId}
+                    isDrawer
+                  />
                 </Grid>
               ))}
             </Grid>
           </Box>
         </Box>
+      </Drawer>
+      <Box
+        sx={{
+          marginTop: "106px",
+          minHeight: "calc(100vh - 76px - 120px )",
+        }}
+      >
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            padding: "0px 20px",
+            mb: 4,
+          }}
+          onClick={toggleDrawer}
+        >
+          <SideCardMenu name={selectedMenu.name} isActive />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              width: { xs: "100%", md: "960px" },
+              padding: { xs: "0px 20px", md: "0px" },
+              display: "flex",
+            }}
+          >
+            <Box
+              sx={{
+                width: "calc(30% - 140px)",
+                mr: "80px",
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              <Box sx={{ width: "100%" }}>
+                {HOME_MENU.map((menu, index) => (
+                  <SideCardMenu
+                    key={index}
+                    name={menu.name}
+                    isActive={
+                      param.menuId ? menu.menuId == param.menuId : index === 0
+                    }
+                    path={menu.menuId}
+                  />
+                ))}
+              </Box>
+            </Box>
+            <Box sx={{ width: { xs: "100%", md: "calc(80%)" } }}>
+              <Box sx={{ width: "100%" }}>
+                <Grid container spacing={4} sx={{}}>
+                  {products.map((menu, index) => (
+                    <Grid key={index} item xs={12} md={6}>
+                      <CardMenu menu={menu} isDetail={true} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

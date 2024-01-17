@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 
 const ActiveProgress = (props) => {
   return (
@@ -12,8 +13,8 @@ const ActiveProgress = (props) => {
       }}
       onClick={props.onClick}
     >
-      <div
-        style={{
+      <Box
+        sx={{
           width: "80%",
           height: 45,
           background: "#faaf18",
@@ -21,10 +22,11 @@ const ActiveProgress = (props) => {
           display: "flex",
           justifyContent: "center",
           color: "#8B542F",
+          fontSize: { xs:10, md:22 },
         }}
       >
         {props.label}
-      </div>
+      </Box>
       <div
         style={{
           width: "10%",
@@ -41,21 +43,21 @@ const ActiveProgress = (props) => {
 
 const DefaultProgress = (props) => {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         backgroundColor: props.isActive ? "#faaf18" : "#fcebd9",
         height: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         color: props.isActive ? "#8B542F" : "#c5a997",
-
+        fontSize: { xs:10, md:22 },
         ...props.style,
       }}
       onClick={props.onClick}
     >
       {props.label}
-    </div>
+    </Box>
   );
 };
 

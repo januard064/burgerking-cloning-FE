@@ -30,9 +30,10 @@ const Menus = () => {
   const [selectedMenu, setSelectedMenu] = useState(HOME_MENU[0]);
 
   useEffect(() => {
-    const menu = HOME_MENU.find((menu) => menu.menuId == param.menuId);
-    console.log({menu})
-    setSelectedMenu(menu);
+    if (param?.menuId) {
+      const menu = HOME_MENU.find((menu) => menu.menuId == param.menuId);
+      setSelectedMenu(menu);
+    }
   }, [param?.menuId]);
 
   // dummy fetch

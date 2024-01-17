@@ -20,7 +20,19 @@ const CartDelivery = () => {
           }}
         >
           <CartProgress step={1} />
-          <div>Preview Cart</div>
+          <div
+            style={{
+              width: "100%",
+              borderRadius: 10,
+              background: "#FFFFFF",
+              boxShadow: "2px 2px 15px -4px #6B6B6B",
+              display: "flex",
+              marginTop: 30,
+              padding:'25px 30px'
+            }}
+          >
+            <div>Guests Details</div>
+          </div>
         </Box>
       </Box>
     </>
